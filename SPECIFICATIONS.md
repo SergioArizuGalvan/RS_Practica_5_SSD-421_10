@@ -45,3 +45,30 @@ classDiagram
   aleshores el sistema mostra per pantalla:
     "[1] Pràctica 1 (RS) - estat: pendent"
     "[2] Examen parcial (SO) - estat: pendent"
+
+
+- GS-04: Assignació correlativa d'ID en afegir múltiples tasques
+  Atès que el fitxer `data/tasks.json` conté les següents tasques:
+    | id | títol      | assignatura | estat   |
+    | 1  | Pràctica 1 | RS          | pendent |
+  quan l’estudiant executa `python src/tasks_app.py add --title 'Examen parcial' --subject 'SO'`
+  aleshores el sistema confirma `Tasca [ID: 2] creada amb èxit`
+  i el fitxer `data/tasks.json` conté ambdues tasques amb ID 1 i ID 2 respectivament.
+
+- GS-05: Error en intentar afegir una tasca amb el títol buit
+  Atès que la base de dades JSON no conté encara tasques
+  quan l’estudiant executa `python src/tasks_app.py add --title '' --subject 'RS'`
+  aleshores el sistema mostra `Error: El títol és obligatori.`
+  i el fitxer `data/tasks.json` no conté cap registre.
+
+- GS-06: Error en intentar afegir una tasca amb l'assignatura buida
+  Atès que la base de dades JSON no conté encara tasques
+  quan l’estudiant executa `python src/tasks_app.py add --title 'Pràctica 1' --subject ''`
+  aleshores el sistema mostra `Error: L'assignatura és obligatòria.`
+  i el fitxer `data/tasks.json` no conté cap registre.
+
+- GS-07: Error en intentar afegir una tasca amb el títol i l'assignatura buits
+  Atès que la base de dades JSON no conté encara tasques
+  quan l’estudiant executa `python src/tasks_app.py add --title '' --subject ''`
+  aleshores el sistema mostra `Error: El títol i l'assignatura són obligatoris.`
+  i el fitxer `data/tasks.json` no conté cap registre.
